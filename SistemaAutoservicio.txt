@@ -1,0 +1,51 @@
+Sistema Autoservicio
+	
+	>> Objetivo:
+		
+		-> Gestionar las campras y ventas de una tienda de servicio
+
+	>> Objetivos especificos 
+		
+		-> Controlar los diferentes tipos de usuarios del sistema 
+		-> Gestionar las comparas y ventas
+		-> Control de proveedores 
+		-> Control de articulos 
+		
+		=========================-Nota-=============================
+		| => Tanto compras como ventas seran efectuadas de contado |
+		| => Para la gestion de los usuarios, a estos se les       |
+		|	 definiran roles.                                      |
+		============================================================
+	-------------------------------------------------------------------
+	
+	>> Catalogos requeridos 
+
+		-> Articulos
+		-> Proveedores 
+		-> Usuarios
+
+	>> Tablas de trabajo 
+
+		-> Compras 
+		-> Detalle_compra
+		-> venta
+		-> Detalle_venta 
+		-> Roles_Usuario
+
+	-------------------------------------------------------------------	
+
+	>> Reportes 
+
+		-> Relacion de Usuarios
+		-> Relacion de usuarios con roles 
+		-> Relacion de compras por periodo y proveedor
+		-> Relacion de ventas por periodo 
+		-> Relacion de proveedores 
+		-> Relacion de Articulos 
+
+	--------------------------------------------------------------------
+		
+		Crear servisio web que envie notificaciones a cuenta de correo 
+		cuando el inventario este en el minimo definido 
+
+	--------------------------------------------------------------------
