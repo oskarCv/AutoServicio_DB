@@ -2,7 +2,7 @@ Sistema Autoservicio
 	
 	>> Objetivo:
 		
-		-> Gestionar las campras y ventas de una tienda de servicio
+		-> Gestionar las campras y ventas e inventario de una tienda de servicio
 
 	>> Objetivos especificos 
 		

@@ -24,6 +24,8 @@ create table Proveedor(
     Nombre			varchar(50) 	not null,
     Telefeno		varchar(12)		not null,
     Direccion		varchar(50)		not null,
+    Ciudad			varchar(50)		not null,
+    Email			varchar(50)		not null,
     RFC				varchar(13)		not null,
     
     primary key(IdProveedor)
@@ -60,6 +62,7 @@ create table Compra(
     IdUsuario		integer 		not null,
     Fecha			datetime		not null,
     IdProveedor		integer			not null,
+    IVA				decimal(8,2)	not null,
     
     primary key(IdCompra),
     foreign key(IdUsuario) references Usuario(IdUsuario),
@@ -82,6 +85,7 @@ create table Venta(
 	IdVenta			integer 		auto_increment,
     IdUsuario		integer 		not null,
     Fecha			datetime		not null,
+    IVA				decimal(8,2)	not null,
     
     primary key(IdVenta),
     foreign key(IdUsuario) references Usuario(IdUsuario)
