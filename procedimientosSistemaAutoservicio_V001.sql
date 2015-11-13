@@ -7,7 +7,7 @@ delimiter //;
 CREATE PROCEDURE registrarArticulo(
 	IN idArticulo INT, IN descripcion VARCHAR(100), IN costo DECIMAL(8,2), IN precio DECIMAL(8,2), 
     IN maximos SMALLINT, IN minimos SMALLINT, IN existencia SMALLINT, 
-    IN Unidades ENUM ('Pza','Caja','Botella','Paquete','Lts','Kgs'))
+    IN Unidades ENUM ('Pza','Paquete','Lts','Kgs'))
 	BEGIN
 		INSERT INTO Autoservicio.Articulo(IdArticulo,Descripcion,Costo,Precio,Maximos,Minimos,Existencia, Unidades)
         VALUES(idArticulo,descripcion,costo, precio, maximos,minimos, existencia, Unidades);

@@ -7,6 +7,15 @@ use Autoservicio;
 
 -- drop schema Autoservicio
 
+create table UnidadMedida(
+	IdUnidad	smallint		auto_increment,
+    Tipo_Unidad	varchar(50)		not null,
+    Decripcion	varchar(100)	not null,
+    Cantidad	smallint		not null,
+    
+    primary key(IdUnidad)
+);
+
 create table Articulo(
 	IdArticulo		integer			not null,
     Descripcion		varchar(100)	not null,
@@ -15,8 +24,10 @@ create table Articulo(
     Maximos			smallint		not null,
     Minimos			smallint		not null,
     Existencia 		smallint		not null,
+    IdUnidad		smallint		not null,
     
-    primary key(IdArticulo)    
+    primary key(IdArticulo),
+    foreign key(IdUnidad)	references UnidadMedida(IdUnidad)
 );
 
 create table Proveedor(
