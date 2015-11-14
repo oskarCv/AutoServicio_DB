@@ -3,7 +3,31 @@
 -- Store Procedures 
 
 USE Autoservicio;
-delimiter //;
+
+DELIMITER //;
+CREATE PROCEDURE registrarProveedor(nombre VARCHAR(50), IN telefono	VARCHAR(12),
+	IN direccion VARCHAR(50), IN ciudad VARCHAR(50), IN email VARCHAR(50), IN RFC VARCHAR(13))
+	BEGIN 
+		INSERT INTO autoservicio.proveedor(Nombre,Telefono,Direccion,Ciudad,Email,RFC)
+        VALUES (nombre, telefono,direccion,ciudad,email,RFC);
+    END
+//;
+
+DELIMITER //;
+CREATE PROCEDURE consultaProveedor(IN IdProveedor INT)
+	BEGIN
+		SELECT * FROM Autoservicio.Proveedor WHERE Autoservicio.Proveedor=IdProveedor;
+    END
+//;
+
+DELIMITER //;
+CREATE PROCEDURE eliminarProveedor(IN IdProveedor INT)
+	BEGIN
+		DELETE FROM autoservicio.proveedor WHERE autoservicio.proveedor.proveedor=IdProveedor;
+    END
+//;
+
+DELIMITER //;
 CREATE PROCEDURE registrarArticulo(
 	IN idArticulo INT, IN descripcion VARCHAR(100), IN costo DECIMAL(8,2), IN precio DECIMAL(8,2), 
     IN maximos SMALLINT, IN minimos SMALLINT, IN existencia SMALLINT, 
