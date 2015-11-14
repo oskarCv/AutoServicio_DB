@@ -15,15 +15,25 @@ CREATE PROCEDURE registrarProveedor(nombre VARCHAR(50), IN telefono	VARCHAR(12),
 
 DELIMITER //;
 CREATE PROCEDURE consultaProveedor(IN IdProveedor INT)
-	BEGIN
-		SELECT * FROM Autoservicio.Proveedor WHERE Autoservicio.Proveedor=IdProveedor;
+	BEGIN 
+		IF EXISTS(SELECT P.IdProveedor FROM Autoservicio.Proveedor AS P WHERE P.IdProveedor = IdProveedor)
+        THEN 
+			SELECT * FROM Autoservicio.Proveedor WHERE Autoservicio.Proveedor.IdProveedor = IdProveedor;
+		ELSE
+			SELECT 'EL PROVEEDOR NO EXISTE EN LA BASE DE DATOS' DB_RESPONCE;
+		END IF;
     END
 //;
 
 DELIMITER //;
 CREATE PROCEDURE eliminarProveedor(IN IdProveedor INT)
-	BEGIN
-		DELETE FROM autoservicio.proveedor WHERE autoservicio.proveedor.proveedor=IdProveedor;
+	BEGIN 
+		IF EXISTS(SELECT P.IdProveedor FROM Autoservicio.Proveedor AS P WHERE P.IdProveedor = IdProveedor)
+        THEN 
+			DELETE FROM Autoservicio.Proveedor WHERE Autoservicio.Proveedor.IdProveedor = IdProveedor;
+		ELSE
+			SELECT 'EL PROVEEDOR NO EXISTE EN LA BASE DE DATOS' DB_RESPONCE;
+		END IF;
     END
 //;
 
@@ -66,8 +76,12 @@ CREATE PROCEDURE consultaArticulo(IN IdArticulo INT)
 CALL registrarArticulo(1,'CD´s',2.50,3.50,10,2,4,1);
 SELECT * FROM Autoservicio.Articulo;
 DROP PROCEDURE registrarArticulo;
-
 DROP PROCEDURE eliminarArticulo;
 
 CALL eliminarArticulo(1);
 CALL consultaArticulo(1);
+CALL registrarProveedor('Jose','colon #45','123456789012','tala','Jose@ooo.com','qawsed123412w');
+CALL consultaProveedor(1);
+CALL eliminarProveedor(1);
+drop procedure consultaProveedor;
+drop procedure eliminarProveedor;
