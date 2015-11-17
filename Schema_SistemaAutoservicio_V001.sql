@@ -49,11 +49,12 @@ create table Roles(
 );
 
 create table Usuario(
-	IdUsuario		integer			not null,
-    Nombre			varchar(50)		not null,
-    Direccion		varchar(50)		not null,
-    Email			varchar(50)		not null,
-    Telefono		varchar(12)		not null,
+	IdUsuario		integer	auto_increment,
+    Nombre			varchar(50)			not null,
+    Clave			varchar(50) binary	not null,
+    Direccion		varchar(50)			not null,
+    Email			varchar(50)			not null,
+    Telefono		varchar(12)			not null,
     
     primary key(IdUsuario)
 );

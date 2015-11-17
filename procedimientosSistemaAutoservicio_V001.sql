@@ -3,9 +3,29 @@
 -- Store Procedures 
 
 USE Autoservicio;
+DELIMITER //;
+CREATE PROCEDURE registrarUsuario(IN nombre VARCHAR(50), IN clave VARCHAR(50), IN direccion VARCHAR(50), 
+	IN e_mail VARCHAR(50), IN telefono VARCHAR(12))
+    BEGIN 
+		INSERT INTO autoservicio.usuario(Nombre,Clave,Direccion,Email,Telefono)
+        VALUES(nombre, clave, direccion, e_mail, telefono);
+    END
+//;
 
 DELIMITER //;
-CREATE PROCEDURE registrarProveedor(nombre VARCHAR(50), IN telefono	VARCHAR(12),
+CREATE PROCEDURE ConsultarUsuario(IN nombre VARCHAR(50), IN clave VARCHAR(50)BINARY)
+	BEGIN 
+		IF EXISTS (SELECT U.Nombre, U.Clave FROM autoservicio.usuario AS U WHERE U.Nombre = nombre AND U.Clave=clave)
+        THEN 
+			SELECT * FROM autoservicio.usuario WHERE autoservicio.usuario.Nombre = nombre AND autoservicio.usuario.Clave=clave;
+		ELSE
+			SELECT 'EL USUARIO NO EXISTE EN LA BASE DE DATOS' DB_RESPONCE;
+		END IF;
+    END
+//;
+
+DELIMITER //;
+CREATE PROCEDURE registrarProveedor(IN nombre VARCHAR(50), IN telefono	VARCHAR(12),
 	IN direccion VARCHAR(50), IN ciudad VARCHAR(50), IN email VARCHAR(50), IN RFC VARCHAR(13))
 	BEGIN 
 		INSERT INTO autoservicio.proveedor(Nombre,Telefono,Direccion,Ciudad,Email,RFC)
